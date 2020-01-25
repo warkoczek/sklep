@@ -23,19 +23,27 @@ public class waliduj extends HttpServlet {
     public waliduj() {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = request.getParameter("user");
+		String login    = request.getParameter("user");
 		String password = request.getParameter("password");
 		System.out.println("login@" + login + "@");
 		System.out.println("password@" + password + "@");
     	String md5 = makeMD5(password);
 		String dbUSER = "darek";
 		String dbPASS = "darek1";
-		boolean userExists = checkIfUserExists(login, md5, dbUSER, dbPASS);
+		String role = checkIfUserExists(login, md5, dbUSER, dbPASS);
 		String page = "";
-		if (userExists == false) {
+		if (role == "no") {
 			page = "createUserAccount.jsp";
 		}
 		else {
+			// wybór typu użytkownika
+			if (role.equals("employee")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", login);
+				session.setAttribute("dbUSER", dbUSER);
+				session.setAttribute("dbPASS", dbPASS);
+				response.sendRedirect("changeOrdersState.jsp");
+			}
 			// pobranie ciasteczka o kluczu = login
 			Cookie[] ciastka = request.getCookies();
 			List<Item> koszyk = new ArrayList<>();
@@ -88,9 +96,10 @@ public class waliduj extends HttpServlet {
 			return null;
 		}
 	}
-	private boolean checkIfUserExists(String login, String md5, String dbUSER, String dbPASS) {
+	private String checkIfUserExists(String login, String md5, String dbUSER, String dbPASS) {
 		Statement stmt = null;
 		ResultSet rs = null;
+		String role = "no";
 		boolean jest = false;
 		try {
 			Connection conn = DatabaseConnection.initializeDatabase("sklep", dbUSER, dbPASS);
@@ -98,16 +107,17 @@ public class waliduj extends HttpServlet {
 			String sql = "SELECT * FROM users where login = '" + login + "' AND md5='" + md5 + "';";
 			rs = stmt.executeQuery(sql);
 			jest = rs.first();
+			role = rs.getString("role");
 			System.out.println("result set: " + jest);
 		}
 		catch(ClassNotFoundException cnfe) {
 			System.out.println("!!!" + cnfe.getMessage());
-			return false;
+			return role;
 		}
 		catch(SQLException se) {
 			System.out.println("@@@"  +se.getMessage());
-			return false;
+			return role;
 		}
-		return jest;
+		return role;
 	}
 }

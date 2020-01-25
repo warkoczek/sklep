@@ -15,16 +15,12 @@ Mechanizm polegający na tym, że:
  - i wtedy jest pytany czy chce, żeby informacja z ciasteczka stała się aktualnym koszykiem, czy też ma to zignorować
 
 Liczba odsłon witryny jest wyświetlana w stopce dokumentu i uwzględnia liczbę odsłon przez zalogowanego użytkownika i ogólnie wszystkich korzystających z witryny
-
-
-
-Zrobić filtr nie dopuszczający do przesłania formularza z dodaniem zerowej lub ujemnej liczby produktów na stronie 'products.jsp'
-
-Zrobić wyświetlanie na stronie 'showShopping.jsp' danych o kwotach zamówienia itp.
+Filtr nie dopuszczający do przesłania formularza z dodaniem zerowej lub ujemnej liczby produktów na stronie 'products.jsp'
+Wyświetlanie na stronie 'showShopping.jsp' danych o kwotach zamówienia itp.
 
 Zrobić stronę z wyświetlaniem danych adresowych i formą (wpłata, za pobraniem itd.) płatności
 
-Finalizacja zakupów wiąże się z usunięciem ciasteczka. Finalizacja dzieje się na stornie order.jsp i tam pojawiają się dane adresowe klienta. Dokończenie zamówienia wiąże się z zapisem do tabeli 'order' (login, data, orderID...) oraz szczegółowych danych zamówienia w tabeli 'orderDetails' (orderID, productID, productQuantity, productPrice)
+Finalizacja zakupów wiąże się z usunięciem ciasteczka. Finalizacja dzieje się na stronie order.jsp i tam pojawiają się dane adresowe klienta. Dokończenie zamówienia wiąże się z zapisem do tabeli 'order' (login, data, orderID...) oraz szczegółowych danych zamówienia w tabeli 'orderDetails' (orderID, productID, productQuantity, productPrice)
 
 Trzeba ulpeszyć stronę showShoppingCart, żeby umożliwiała usuwanie z koszyka, zmianę liczby sztuk, robiła wycenę...
 
