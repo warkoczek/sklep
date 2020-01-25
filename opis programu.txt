@@ -1,0 +1,35 @@
+Logowanie się do aplikacji w postaci formularza
+Pobieranie z bazy danych produktów
+Sortowanie produktów wg rozmaitych kryteriów
+Wyświetlanie produktów z odrębnych kategorii
+Dodawanie wskazanego produktu i jego liczby sztuk do koszyka
+Strona z koszykiem zakupów (wyświetlanie zawartości koszyka)
+Zastosowanie dwóch filtrów dla operacji logowania się do aplikacji:
+    - filtr dotyczący długości nazwy użytkownika (min. 3 znaki)
+    - filtr dotyczący hasła (musi posiadać znak 0 lub 1)
+Filtr w przypadku nie spełnienia danego warunku wyświetla odpowiednią informację (o błędzie) w formularzu logowania się do aplikacji
+Mechanizm polegający na tym, że:
+ - tworzone jest ciasteczko, które jest aktualizowane z każdą zmianą w koszyku zamówienia
+ - oczywistość: ciasteczko jest zapisywane po każdej zmianie
+ - użytkownik loguje się i dostaje informację, że ma koszyk (poprzez ciasteczko), który nie został zamieniony w zamówienie
+ - i wtedy jest pytany czy chce, żeby informacja z ciasteczka stała się aktualnym koszykiem, czy też ma to zignorować
+
+Liczba odsłon witryny jest wyświetlana w stopce dokumentu i uwzględnia liczbę odsłon przez zalogowanego użytkownika i ogólnie wszystkich korzystających z witryny
+
+
+
+Zrobić filtr nie dopuszczający do przesłania formularza z dodaniem zerowej lub ujemnej liczby produktów na stronie 'products.jsp'
+
+Zrobić wyświetlanie na stronie 'showShopping.jsp' danych o kwotach zamówienia itp.
+
+Zrobić stronę z wyświetlaniem danych adresowych i formą (wpłata, za pobraniem itd.) płatności
+
+Finalizacja zakupów wiąże się z usunięciem ciasteczka. Finalizacja dzieje się na stornie order.jsp i tam pojawiają się dane adresowe klienta. Dokończenie zamówienia wiąże się z zapisem do tabeli 'order' (login, data, orderID...) oraz szczegółowych danych zamówienia w tabeli 'orderDetails' (orderID, productID, productQuantity, productPrice)
+
+Trzeba ulpeszyć stronę showShoppingCart, żeby umożliwiała usuwanie z koszyka, zmianę liczby sztuk, robiła wycenę...
+
+Utworzyć pole 'role' w klasie i użytkownikom tworzącym konta przypisywać rolę 'client', natomiast procownicy mają rolę 'employee' lub 'admin'
+
+Zalogowanie się jako admin powoduje wyświetlenie opcji: dodaj konto, wyświetl konta, usuń konto, zmień konto
+
+Zalogownaie się jako 'employee' powoduje wyświetlenie zamówień (showOrders.jsp) i zmianę ich statusów
